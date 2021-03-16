@@ -546,5 +546,71 @@ namespace AudioProcess
         }
 
         #endregion Playback functions
+
+        #region Tutorial 3
+        public delegate (float Ch1, float Ch2) TimeDelegate(double time);
+        public void ApplyDelegateByTime(TimeDelegate timeDelegate)
+        {
+            ProgressBar progress = new ProgressBar();
+            progress.Runworker();
+
+            float duration = Duration - 1.0f / Format.SampleRate;
+            int index = 0;
+            for (double time = 0.0; time < duration; time += 1.0 / Format.SampleRate)
+            {
+                var newVal = timeDelegate(time);
+                Samples[index] = newVal.Ch1;
+                Samples[index + 1] = newVal.Ch2;
+
+                index += Format.Channels;
+
+                progress.UpdateProgress(time / duration);
+            }
+        }
+
+        public delegate float SampleDelegate(float sample);
+        public void ApplyDelegateBySample(SampleDelegate sampleDelegate)
+        {
+            ProgressBar progress = new ProgressBar();
+            progress.Runworker();
+
+            for (int i = 0; i < Samples.Length; i++)
+            {
+                Samples[i] = sampleDelegate(Samples[i]);
+
+                progress.UpdateProgress((double)i / Samples.Length);
+            }
+        }
+
+        public delegate float IndexDelegate(int index);
+        public void ApplyDelegateByIndex(IndexDelegate sampleDelegate)
+        {
+            ProgressBar progress = new ProgressBar();
+            progress.Runworker();
+
+            for (int i = 0; i < Samples.Length; i++)
+            {
+                Samples[i] = sampleDelegate(i);
+
+                progress.UpdateProgress((double)i / Samples.Length);
+            }
+        }
+
+        public delegate float SampleAndTimeDelegate(float sample, float time);
+        public void ApplyDelegateBySampleAndTime(SampleAndTimeDelegate sampleDelegate)
+        {
+            ProgressBar progress = new ProgressBar();
+            progress.Runworker();
+
+            float time = 0;
+            for (int i = 0; i < Samples.Length-1; i += Format.Channels, time += 1.0f / Format.SampleRate)
+            {
+                for (int c = 0; c < Format.Channels; c++)
+                    Samples[i + c] = sampleDelegate(Samples[i + c], time);
+
+                progress.UpdateProgress((double)i / Samples.Length);
+            }
+        }
+        #endregion
     }
 }

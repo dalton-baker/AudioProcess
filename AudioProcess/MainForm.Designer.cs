@@ -45,6 +45,9 @@
             this.generateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sineItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sineParamsItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sineWavesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.processToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.volumeAdjustItem = new System.Windows.Forms.ToolStripMenuItem();
             this.renderFormatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,6 +57,13 @@
             this.vScrollBar = new System.Windows.Forms.VScrollBar();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.allHarmonicsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.oddHarmonicsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rampToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tremoloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.halfSpeedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.doubleSpeedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reverseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -150,21 +160,21 @@
             // playItem
             // 
             this.playItem.Name = "playItem";
-            this.playItem.Size = new System.Drawing.Size(105, 22);
+            this.playItem.Size = new System.Drawing.Size(180, 22);
             this.playItem.Text = "Play";
             this.playItem.Click += new System.EventHandler(this.playItem_Click);
             // 
             // stopItem
             // 
             this.stopItem.Name = "stopItem";
-            this.stopItem.Size = new System.Drawing.Size(105, 22);
+            this.stopItem.Size = new System.Drawing.Size(180, 22);
             this.stopItem.Text = "Stop";
             this.stopItem.Click += new System.EventHandler(this.stopItem_Click);
             // 
             // pauseItem
             // 
             this.pauseItem.Name = "pauseItem";
-            this.pauseItem.Size = new System.Drawing.Size(105, 22);
+            this.pauseItem.Size = new System.Drawing.Size(180, 22);
             this.pauseItem.Text = "Pause";
             this.pauseItem.Click += new System.EventHandler(this.pauseItem_Click);
             // 
@@ -172,7 +182,12 @@
             // 
             this.generateToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sineItem,
-            this.sineParamsItem});
+            this.sineParamsItem,
+            this.sineWavesToolStripMenuItem,
+            this.toolStripMenuItem2,
+            this.toolStripMenuItem3,
+            this.allHarmonicsToolStripMenuItem,
+            this.oddHarmonicsToolStripMenuItem});
             this.generateToolStripMenuItem.Name = "generateToolStripMenuItem";
             this.generateToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.generateToolStripMenuItem.Text = "Generate";
@@ -180,21 +195,47 @@
             // sineItem
             // 
             this.sineItem.Name = "sineItem";
-            this.sineItem.Size = new System.Drawing.Size(158, 22);
+            this.sineItem.Size = new System.Drawing.Size(180, 22);
             this.sineItem.Text = "Make Sine";
             this.sineItem.Click += new System.EventHandler(this.sineItem_Click);
             // 
             // sineParamsItem
             // 
             this.sineParamsItem.Name = "sineParamsItem";
-            this.sineParamsItem.Size = new System.Drawing.Size(158, 22);
+            this.sineParamsItem.Size = new System.Drawing.Size(180, 22);
             this.sineParamsItem.Text = "Sine Parameters";
             this.sineParamsItem.Click += new System.EventHandler(this.sineParamsItem_Click);
+            // 
+            // sineWavesToolStripMenuItem
+            // 
+            this.sineWavesToolStripMenuItem.Name = "sineWavesToolStripMenuItem";
+            this.sineWavesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sineWavesToolStripMenuItem.Text = "Sine Waves";
+            this.sineWavesToolStripMenuItem.Click += new System.EventHandler(this.sineWavesToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem2.Text = "234";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenu234_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem3.Text = "357";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenu357_Click);
             // 
             // processToolStripMenuItem
             // 
             this.processToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.volumeAdjustItem});
+            this.volumeAdjustItem,
+            this.rampToolStripMenuItem,
+            this.tremoloToolStripMenuItem,
+            this.halfSpeedToolStripMenuItem,
+            this.doubleSpeedToolStripMenuItem,
+            this.reverseToolStripMenuItem});
             this.processToolStripMenuItem.Name = "processToolStripMenuItem";
             this.processToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.processToolStripMenuItem.Text = "Process";
@@ -202,7 +243,7 @@
             // volumeAdjustItem
             // 
             this.volumeAdjustItem.Name = "volumeAdjustItem";
-            this.volumeAdjustItem.Size = new System.Drawing.Size(151, 22);
+            this.volumeAdjustItem.Size = new System.Drawing.Size(180, 22);
             this.volumeAdjustItem.Text = "Volume Adjust";
             this.volumeAdjustItem.Click += new System.EventHandler(this.volumeAdjustItem_Click);
             // 
@@ -260,6 +301,55 @@
             // 
             this.saveFileDialog.Filter = "Wave Files (*.wav)|*.wav| MP3 (*.mp3)|*.mp3";
             // 
+            // allHarmonicsToolStripMenuItem
+            // 
+            this.allHarmonicsToolStripMenuItem.Name = "allHarmonicsToolStripMenuItem";
+            this.allHarmonicsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.allHarmonicsToolStripMenuItem.Text = "All Harmonics";
+            this.allHarmonicsToolStripMenuItem.Click += new System.EventHandler(this.allHarmonicsToolStripMenuItem_Click);
+            // 
+            // oddHarmonicsToolStripMenuItem
+            // 
+            this.oddHarmonicsToolStripMenuItem.Name = "oddHarmonicsToolStripMenuItem";
+            this.oddHarmonicsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.oddHarmonicsToolStripMenuItem.Text = "Odd Harmonics";
+            this.oddHarmonicsToolStripMenuItem.Click += new System.EventHandler(this.oddHarmonicsToolStripMenuItem_Click);
+            // 
+            // rampToolStripMenuItem
+            // 
+            this.rampToolStripMenuItem.Name = "rampToolStripMenuItem";
+            this.rampToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.rampToolStripMenuItem.Text = "Ramp";
+            this.rampToolStripMenuItem.Click += new System.EventHandler(this.rampToolStripMenuItem_Click);
+            // 
+            // tremoloToolStripMenuItem
+            // 
+            this.tremoloToolStripMenuItem.Name = "tremoloToolStripMenuItem";
+            this.tremoloToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.tremoloToolStripMenuItem.Text = "Tremolo";
+            this.tremoloToolStripMenuItem.Click += new System.EventHandler(this.tremoloToolStripMenuItem_Click);
+            // 
+            // halfSpeedToolStripMenuItem
+            // 
+            this.halfSpeedToolStripMenuItem.Name = "halfSpeedToolStripMenuItem";
+            this.halfSpeedToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.halfSpeedToolStripMenuItem.Text = "Half Speed";
+            this.halfSpeedToolStripMenuItem.Click += new System.EventHandler(this.halfSpeedToolStripMenuItem_Click);
+            // 
+            // doubleSpeedToolStripMenuItem
+            // 
+            this.doubleSpeedToolStripMenuItem.Name = "doubleSpeedToolStripMenuItem";
+            this.doubleSpeedToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.doubleSpeedToolStripMenuItem.Text = "Double Speed";
+            this.doubleSpeedToolStripMenuItem.Click += new System.EventHandler(this.doubleSpeedToolStripMenuItem_Click);
+            // 
+            // reverseToolStripMenuItem
+            // 
+            this.reverseToolStripMenuItem.Name = "reverseToolStripMenuItem";
+            this.reverseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.reverseToolStripMenuItem.Text = "Reverse";
+            this.reverseToolStripMenuItem.Click += new System.EventHandler(this.reverseToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -308,6 +398,16 @@
         private System.Windows.Forms.ToolStripMenuItem sineParamsItem;
         private System.Windows.Forms.ToolStripMenuItem processToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem volumeAdjustItem;
+        private System.Windows.Forms.ToolStripMenuItem sineWavesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem allHarmonicsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem oddHarmonicsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rampToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tremoloToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem halfSpeedToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem doubleSpeedToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reverseToolStripMenuItem;
     }
 }
 

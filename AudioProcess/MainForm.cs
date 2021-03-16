@@ -3,26 +3,27 @@ using System.Drawing;
 using System.Windows.Forms;
 using NAudio.Wave;
 
-/**********************************************************************************✓
+/**********************************************************************************
 * Mark off what items are complete (e.g. x, done, checkmark, etc), and put a P if 
 * partially complete. If 'P' include how to test what is working for partial credit 
 * below the checklist line.
 * 
 * Total available points:  100
 * 
-* ______	30	Tutorial completed (if not, what was the last section completed)
-* ______	5	234 Menu Option
-* ______	5	357 Menu Option
-* ______	10	All Harmonics Option
-* ______	5	Odd Harmonics Option
-* ______	10	Ramp In/Out
-* ______	10	Tremolo
-* ______	10	Half Speed
-* ______	10	Backwards
-* ______    5   Did you hear it? (Completion points)
-* 			NASA Statement about Roswell: ____
-* 			Joran van der Sloot: ____
-* 			Nancy Pelosi: ____
+* ✓______   30	Tutorial completed (if not, what was the last section completed)
+* ✓______   5	234 Menu Option
+* ✓______   5	357 Menu Option
+* ✓______   10	All Harmonics Option - These sounded much clearer and crisper than
+* ✓______   5	Odd Harmonics Option - the 234 and 357 versions
+* ✓______   10	Ramp In/Out
+* ✓______   10	Tremolo
+* ✓______   10	Half Speed
+* ✓______   10	Backwards
+* ✓______   5   Did you hear it? (Completion points)
+* 			NASA Statement about Roswell: Before: 0 After: 9
+* 			Joran van der Sloot: Before: 0 After: 9
+* 			Nancy Pelosi: Before: 0 After: 9
+* 			I really tried to hear anything in the reversed audio, but I couldn't until I read what I was supposed to hear
 * ______	Total (please add the points and include the total here)
 * 
 * 
@@ -207,9 +208,6 @@ namespace AudioProcess
             gen.MakeParamSine();
         }
 
-
-        #endregion
-
         private void volumeAdjustItem_Click(object sender, EventArgs e)
         {
             Volume_Adjust dlg = new Volume_Adjust();
@@ -220,6 +218,71 @@ namespace AudioProcess
             }
             
         }
+        #endregion
 
+        #region Tutorial 3
+        private void sineWavesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            gen.MakeSineAdditive(sound);
+            Invalidate();
+        }
+        #endregion
+
+        private void toolStripMenu234_Click(object sender, EventArgs e)
+        {
+            gen.Make234Harm(sound);
+            Invalidate();
+        }
+
+        private void toolStripMenu357_Click(object sender, EventArgs e)
+        {
+            gen.Make357Harm(sound);
+            Invalidate();
+        }
+
+        private void allHarmonicsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            gen.MakeAllHarm(sound);
+            Invalidate();
+        }
+
+        private void oddHarmonicsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            gen.MakeOddHarm(sound);
+            Invalidate();
+        }
+
+        private void rampToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            process.OnProcessRamp(sound);
+            Invalidate();
+        }
+
+        private void tremoloToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            process.OnProcessTremolo(sound);
+            Invalidate();
+        }
+
+        private void halfSpeedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            sound = process.OnProcessHalfSpeed(sound);
+            soundRendering.Sound = sound;
+            Invalidate();
+        }
+
+        private void doubleSpeedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            sound = process.OnProcessDoubleSpeed(sound);
+            soundRendering.Sound = sound;
+            Invalidate();
+        }
+        
+        private void reverseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            sound = process.OnProcessReverse(sound);
+            soundRendering.Sound = sound;
+            Invalidate();
+        }
     }
 }
